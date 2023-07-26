@@ -1,42 +1,28 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import javax.xml.namespace.QName;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
-
-
-    public List<Double> averageOfLevels(TreeNode root) {
-        List<Double> result = new ArrayList<>();
-
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-
-        while (!queue.isEmpty()) {
-            int levelSize = queue.size();
-
-            double levelSum = 0.0;
-
-            for (int i = 0; i < levelSize; i++) {
-                TreeNode currentNode = queue.poll();
-
-                // add the node's value to the running sum
-                levelSum += currentNode.val;
-
-                if (currentNode.left != null) queue.offer(currentNode.left);
-                if (currentNode.right != null) queue.offer(currentNode.right);
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] {map.get(complement), i};
             }
-
-            // append the current level's average to the result array
-            result.add(levelSum / levelSize);
+            map.put(nums[i], i);
         }
-        return result;
-
+        return new int[]{};
     }
 
     public static void main(String[] args) {
+        Main main = new Main();
+
+        int[] b={3,3};
+        main.twoSum(b,6);
+
 
 
     }
