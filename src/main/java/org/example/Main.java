@@ -1,25 +1,30 @@
 package org.example;
 
+import javax.swing.tree.TreeNode;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class Main {
 
-    public Boolean generatePascalsTriangle(int num) {
-        if (num ==1) {
-            return false;
+    public int fib(int n) {
+        if(n==0 || n==1){
+            return n;
         }
-        int sum = 1;
-        for (int i = 2; i <=  Math.sqrt(num); i++) {
-            if (num % i == 0) {
-                sum += i;
-                if (i != num / i) {
-                    sum += num / i;
-                }
-            }
-        }
-        return sum == num;
+        int fib1 = fib(n-1);
+        int fib2 = fib(n-2);
+
+        int ans = fib1 + fib2;
+
+        return ans;
+
+
     }
+
     public static void main(String[] args) {
 
         Main main=new Main();
-        System.out.println(main.generatePascalsTriangle(1));
+        System.out.println(main.fib(6));
     }
 }
