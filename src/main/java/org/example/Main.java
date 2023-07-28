@@ -1,27 +1,28 @@
 package org.example;
 
 import javax.xml.namespace.QName;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int complement = target - nums[i];
-            if (map.containsKey(complement)) {
-                return new int[] {map.get(complement), i};
-            }
-            map.put(nums[i], i);
+    public int commonFactors(int a, int b) {
+       int sum=0;
+       if (a>b){
+           for (int i = 1; i <= b; i++) {
+               if (a%i==0&&b%i==0)sum++;
+           }
+       }else
+        for (int i = 1; i <= a; i++) {
+            if (a%i==0&&b%i==0)sum++;
         }
-        return new int[]{};
+
+        return sum;
     }
 
     public static void main(String[] args) {
         Main main = new Main();
+        System.out.println(main.commonFactors(25,30));
 
-        int[] b={3,3};
-        main.twoSum(b,6);
+
+
 
 
 
