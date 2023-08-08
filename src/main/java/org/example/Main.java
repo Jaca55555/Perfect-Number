@@ -1,32 +1,32 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
 
-    public static String getDayOfWeek(int day, int month, int year) {
-        if (month < 3) {
-            month += 12;
-            year -= 1;
+    public int numIdenticalPairs(int[] nums) {
+
+        int sum=0;
+        for (int i = 0; i <nums.length-1; i++) {
+            for (int j = i+1; j < nums.length; j++) {
+                if (nums[i]==nums[j])sum++;
+            }
         }
-
-        int K = year % 100;
-        int J = year / 100;
-
-        // Zeller's Congruence formula
-        int dayOfWeek = (day + 13 * (month + 1) / 5 + K + K / 4 + J / 4 - 2 * J) % 7;
-
-        // Convert the result to one of the week days
-        String[] weekDays = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
-        return weekDays[(dayOfWeek + 7) % 7];
+        return sum;
     }
 
 
-
     public static void main(String[] args) {
-        int day = 1;
-        int month = 8;
-        int year = 2023;
-        String dayOfWeek = getDayOfWeek(day, month, year);
-        System.out.println(dayOfWeek); // Output: "Tuesday"
+        int[] nums={1,2,3,1,1,3};
+        Main main=new Main();
+        Scanner sc=new Scanner(System.in);
+        System.out.println(main.numIdenticalPairs(nums));
+
+
+
+
 
     }
 }
