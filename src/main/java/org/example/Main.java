@@ -7,12 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     public int arrangeCoins(int n) {
-        int i = 0;
-        while (n >= i) {
-            n -= i;
-            i++;
-        }
-        return i-1;
+        return (int) (Math.sqrt(2.0 * n + 0.25) - 0.5);
     }
 
     public static void main(String[] args) {
