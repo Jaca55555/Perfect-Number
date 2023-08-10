@@ -6,17 +6,26 @@ import java.util.Scanner;
 
 public class Main {
 
-    public int search(int[] nums, int target) {
+    public int reverse(int x) {
+            int reversed = 0;
 
-        int index=-1;
-        for (int i = 0; i < nums.length; i++) {
-            if (target==nums[i]){
-                index =i;
-                break;
+            while (x != 0) {
+                int lastDigit = x % 10;
+
+                // Check for overflow/underflow before updating reversed
+                if (reversed > Integer.MAX_VALUE / 10 || (reversed == Integer.MAX_VALUE / 10 && lastDigit > 7)) {
+                    return 0; // Overflow will occur
+                }
+                if (reversed < Integer.MIN_VALUE / 10 || (reversed == Integer.MIN_VALUE / 10 && lastDigit < -8)) {
+                    return 0; // Underflow will occur
+                }
+
+                reversed = reversed * 10 + lastDigit;
+                x = x / 10;
             }
-        }
-        return index;
 
+            return reversed;
+        }
 
 
     }
@@ -24,10 +33,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-        int[] nums={-1,0,3,5,9,12};
+        int a=123;
         Main main=new Main();
-        Scanner sc=new Scanner(System.in);
-        System.out.println(main.search(nums,2));
+        System.out.println(main.reverse(a));
 
 
 
