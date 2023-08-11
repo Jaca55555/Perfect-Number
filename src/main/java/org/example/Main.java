@@ -1,19 +1,22 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-
 public class Main {
 
-    public int arrangeCoins(int n) {
-        return (int) (Math.sqrt(2.0 * n + 0.25) - 0.5);
+    public int lengthOfLastWord(String s) {
+
+        String a[]=s.split(" ");
+        int sum=0;
+       for (String ab:a){
+           sum=ab.length();
+       }
+       return  sum;
     }
 
+
     public static void main(String[] args) {
-        int a = 8;
+        String a="Hello World";
         Main main = new Main();
-        System.out.println(main.arrangeCoins(a));
+        System.out.println(main.lengthOfLastWord(a));
 
 
     }
